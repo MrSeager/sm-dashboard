@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:400,700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/*Background*/
+.bg-dark-blue {
+    background-color: hsl(230, 17%, 14%) !important;
+}
+
+/*Switch*/
+.cs-switch .form-check {
+    display: flex;
+    align-items: center;
+}
+
+.cs-switch .form-check-label {
+    order: -1; /* Moves the label to the left */
+    margin-right: 50px; /* Adjust spacing as needed */
+}
