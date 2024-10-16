@@ -4,10 +4,152 @@ body {
     font-family: 'Inter', sans-serif !important;
 }
 
-/*Background*/
-.bg-dark-blue {
-    background-color: hsl(230, 17%, 14%) !important;
+.cs-transition {
+    transition: .5s !important;
 }
+
+.cs-item {
+    cursor: pointer;
+}
+
+/*Background*/
+.cs-bg-dark {
+    background-color: hsl(230, 17%, 14%) !important;
+    position: relative;
+    z-index: 1;
+}
+
+.cs-bg-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40vh !important;
+    background-color: hsl(232, 19%, 15%) !important;
+    z-index: -1;
+    transition: .5s !important;
+}
+
+.cs-bg-light {
+    background-color: hsl(0, 0%, 100%) !important;
+    position: relative;
+    z-index: 1;
+}
+
+.cs-bg-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40vh !important;
+    background-color: hsl(225, 100%, 98%) !important;
+    z-index: -1;
+    transition: .5s !important;
+}
+
+.bg-item-dark {
+    background-color: hsl(228, 28%, 20%) !important;
+}
+
+.bg-item-dark:hover {
+    background-color: hsl(228, 28%, 40%) !important;
+}
+
+.bg-item-light {
+    background-color: hsl(227, 47%, 96%) !important;
+}
+
+.bg-item-light:hover {
+    background-color: hsl(227, 47%, 86%) !important;
+}
+
+/*Border*/
+.cs-bc-blue {
+    position: relative;
+}
+
+.cs-bc-blue::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1vh;
+    background-color: hsl(208, 92%, 53%) !important;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.cs-bc-in {
+    position: relative;
+}
+
+.cs-bc-in::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1vh; /* Adjust height as needed */
+    background: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.cs-bc-red {
+    position: relative;
+}
+
+.cs-bc-red::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1vh; /* Adjust height as needed */
+    background-color: hsl(348, 97%, 39%) !important;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+/*Font*/
+.fw-700 {
+    font-weight: 700 !important;
+}
+
+.tc-dark {
+    color: hsl(0, 0%, 100%) !important;
+}
+
+.tc-dark-2 {
+    color: hsl(228, 34%, 66%) !important;
+}
+
+.tc-light {
+    color: hsl(230, 17%, 14%) !important;
+}
+
+.tc-light-2 {
+    color: hsl(228, 12%, 44%) !important;
+}
+
+.tc-blue {
+    color: hsl(208, 92%, 53%) !important;
+}
+
+.tc-green {
+    color: hsl(163, 72%, 41%) !important;
+}
+
+.tc-red {
+    color: hsl(348, 97%, 39%) !important;
+}
+
+.letter-spacing-3 {
+    letter-spacing: 0.3em !important;
+}  
 
 /*Switch*/
 .cs-switch .form-check {
@@ -16,6 +158,34 @@ body {
 }
 
 .cs-switch .form-check-label {
-    order: -1; /* Moves the label to the left */
-    margin-right: 50px; /* Adjust spacing as needed */
+    order: -1;
+    margin-right: 50px;
 }
+
+#cs-switch.form-check-input {
+    background: linear-gradient(100deg, rgba(55,143,230,1) 0%, rgba(62,218,130,1) 100%) !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: relative;
+}
+
+/* Define the knob */
+#cs-switch.form-check-input::after {
+    content: '';
+    display: inline-block;
+    width: 12px; /* Adjust size as needed */
+    height: 12px; /* Adjust size as needed */
+    background-color: hsl(232, 19%, 15%); /* Knob color */
+    border-radius: 50%; /* Make it round */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: left 0.2s; /* Smooth transition */
+    left: 2px !important; /* Initial position */
+  }
+  
+  /* Change knob position and color when checked */
+  #cs-switch.form-check-input:checked::after {
+    left: calc(100% - 15px) !important; /* Adjust based on size to move to the right */
+    background-color: hsl(225, 100%, 98%); /* Knob color when checked */
+  }
