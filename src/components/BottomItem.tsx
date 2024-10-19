@@ -10,6 +10,7 @@ import InLogo from '../images/icon-instagram.svg';
 import YtLogo from '../images/icon-youtube.svg';
 
 interface BottomItemProps {
+    index: number,
     icon: string,
     currTheme: string,
     headline: string,
@@ -24,7 +25,7 @@ function getRandomZoom() {
   return randomZoom[Math.floor(Math.random() * randomZoom.length)];
 }
 
-const BottomItem: FC<BottomItemProps> = ({ icon, currTheme, headline, num, arrow, per }) => {
+const BottomItem: FC<BottomItemProps> = ({ index, icon, currTheme, headline, num, arrow, per }) => {
     const zoom = getRandomZoom();
     
     const renderIcon = () => {
@@ -50,18 +51,20 @@ const BottomItem: FC<BottomItemProps> = ({ icon, currTheme, headline, num, arrow
     }
 
     return(
-        <Container data-aos={zoom} className={`h-100 cs-item cs-transition p-4 rounded bg-item-${currTheme}`}>
-            <Row>
-                <Col xs={12} className='d-flex flex-row justify-content-between align-items-center'>
-                    <h5 className={`h6 fw-700 cs-transition my-1 d-flex flex-row cs-transition tc-${currTheme}-2`}>{headline}</h5>
-                    {renderIcon()}
-                </Col>
-                <Col xs={12} className='mt-4 d-flex flex-row justify-content-between align-items-end'>
-                    <h5 className={`h1 fw-700 cs-transition m-0 d-flex flex-row cs-transition tc-${currTheme}`}>{num}</h5>
-                    {renderPercent()}
-                </Col>
-            </Row>
-        </Container>
+        <Col data-aos={zoom} key={index} lg={3} md={6} xs={12} className='p-3'>
+            <Container className={`h-100 cs-item cs-transition p-4 rounded bg-item-${currTheme}`}>
+                <Row>
+                    <Col xs={12} className='d-flex flex-row justify-content-between align-items-center'>
+                        <h5 className={`h6 fw-700 cs-transition my-1 d-flex flex-row cs-transition tc-${currTheme}-2`}>{headline}</h5>
+                        {renderIcon()}
+                    </Col>
+                    <Col xs={12} className='mt-4 d-flex flex-row justify-content-between align-items-end'>
+                        <h5 className={`h1 fw-700 cs-transition m-0 d-flex flex-row cs-transition tc-${currTheme}`}>{num}</h5>
+                        {renderPercent()}
+                    </Col>
+                </Row>
+            </Container>
+        </Col>
     );
 }
 

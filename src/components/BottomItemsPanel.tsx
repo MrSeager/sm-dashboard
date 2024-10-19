@@ -23,19 +23,20 @@ const BottomItemsPanel: FC<TopItemsPanelProps> = ({ currTheme, head }) => {
     
     return (
         <Container fluid className='mt-4'>
-            <h4 data-aos="fade-right" className={`ms-md-0 ms-5 h4 m-0 fw-700 cs-transition tc-${currTheme}`}>{head}</h4>
+            <div data-aos="fade-right">
+                <h4 className={`ms-md-0 ms-5 h4 m-0 fw-700 cs-transition tc-${currTheme}`}>{head}</h4>
+            </div>
             <Row>
                 {bottomItems.map((item, index) => (
-                    <Col key={index} lg={3} md={6} xs={12} className='p-3'>
-                        <BottomItem
-                            icon={item.icon}
-                            currTheme={currTheme}
-                            headline={item.headline}
-                            num={item.num}
-                            arrow={item.arrow}
-                            per={item.per}
-                        />
-                    </Col>
+                    <BottomItem
+                        index={index}
+                        icon={item.icon}
+                        currTheme={currTheme}
+                        headline={item.headline}
+                        num={item.num}
+                        arrow={item.arrow}
+                        per={item.per}
+                    />
                 ))}
             </Row>
         </Container>

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 //Bootstrap
-import { Container, Image } from 'react-bootstrap';
+import { Container, Image, Col } from 'react-bootstrap';
 //Icons
 import { MdArrowDropUp, MdArrowDropDown } from "react-icons/md";
 //Images
@@ -10,6 +10,7 @@ import InLogo from '../images/icon-instagram.svg';
 import YtLogo from '../images/icon-youtube.svg';
 
 interface TopItemProps {
+    index: number,
     icon: string,
     currTheme: string,
     line_1: string,
@@ -24,7 +25,7 @@ function getRandomZoom() {
   return randomZoom[Math.floor(Math.random() * randomZoom.length)];
 }
 
-const TopItem: FC<TopItemProps> = ({ icon, currTheme, line_1, line_2, line_3, line_4 }) => {
+const TopItem: FC<TopItemProps> = ({ index, icon, currTheme, line_1, line_2, line_3, line_4 }) => {
     const zoom = getRandomZoom();
 
     const renderIcon = (icon: string) => {
@@ -70,12 +71,14 @@ const TopItem: FC<TopItemProps> = ({ icon, currTheme, line_1, line_2, line_3, li
     }
 
     return(
-        <Container data-aos={zoom} className={`h-100 cs-item cs-bc${renderBorder(icon)} cs-transition d-flex flex-column align-items-center justify-content-between text-center pt-4 pb-3 px-0 rounded bg-item-${currTheme}`}>
-            <h2 className={`cs-transition h6 lh-base my-1 d-flex flex-row cs-transition tc-${currTheme}-2`}>{renderIcon(icon)}{line_1}</h2>
-            <h3 className={`cs-transition display-2 my-1 fw-700 tc-${currTheme}`}>{line_2}</h3>
-            <h4 className={`cs-transition my-1 text-uppercase h6 tc-${currTheme}-2 letter-spacing-3`}>{line_3}</h4>
-            <p className={`fw-700 fs-6 tc-${renderTC(icon)} mt-3`}>{renderArrow(icon)}{line_4} Today</p>
-        </Container>
+        <Col data-aos={zoom} key={index} lg={3} md={6} xs={12} className='p-3'>
+            <Container className={`h-100 cs-item cs-bc${renderBorder(icon)} cs-transition d-flex flex-column align-items-center justify-content-between text-center pt-4 pb-3 px-0 rounded bg-item-${currTheme}`}>
+                <h2 className={`cs-transition h6 lh-base my-1 d-flex flex-row cs-transition tc-${currTheme}-2`}>{renderIcon(icon)}{line_1}</h2>
+                <h3 className={`cs-transition display-2 my-1 fw-700 tc-${currTheme}`}>{line_2}</h3>
+                <h4 className={`cs-transition my-1 text-uppercase h6 tc-${currTheme}-2 letter-spacing-3`}>{line_3}</h4>
+                <p className={`fw-700 fs-6 tc-${renderTC(icon)} mt-3`}>{renderArrow(icon)}{line_4} Today</p>
+            </Container>
+        </Col>
     );
 }
 
